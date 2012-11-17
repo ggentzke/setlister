@@ -3,11 +3,25 @@
 <% if @setlist.songs.present? %>
 	<ul>
 		<% @setlist.songs.each do |song| %>
-			<li><%= song.title %> (<%= song.duration %>)</li>
+			<li><%= song.title %> (<%= music_duration song.duration %>)</li>
 		<% end %>
 	</ul>
 <% else %>
 	<p>This setlist has no songs.</p>
+<% end %>
+
+<p>
+  <strong>Add songs to this setlist:</strong>
+<br />
+<% if @setlist.available_songs.present? %>
+  <%= form_for(@setlist) do |f| %>
+    <%= select_tag 'add_song', options_from_collection_for_select(@setlist.available_songs, :id, :title), { prompt: 'Select a Song' } %>
+    <%= f.submit %>
+  <% end %>
+<% else %>
+  <p>
+    No other songs are available.
+  </p>
 <% end %>
 
 <%= link_to 'Back to all setlists', setlists_path %>

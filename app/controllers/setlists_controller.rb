@@ -28,12 +28,18 @@ class SetlistsController < ApplicationController
 
 	def update
 		@setlist = Setlist.find(params[:id])
-
-		if @setlist.update_attributes(params[:setlist])
-			redirect_to setlist_path, notice: 'Setlist updated'
-		else
-			render action: 'update'
-		end
+    
+    if params[:add_song].present?
+      @setlist.songs.push Song.find(params[:add_song])
+      @setlist.save
+      redirect_to setlist_path, notice: 'Setlist updated'
+    else
+		  if @setlist.update_attributes(params[:setlist])
+  			redirect_to setlist_path, notice: 'Setlist updated'
+  		else
+  			render action: 'update'
+  		end
+  	end
 	end
 
 	def destroy
