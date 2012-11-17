@@ -1,0 +1,25 @@
+<h1>Listing setlists</h1>
+
+<table>
+  <tr>
+    <th>Duration</th>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @setlists.each do |setlist| %>
+  <tr>
+    <td><%= setlist.duration %></td>
+    <td><%= setlist.name %></td>
+    <td><%= link_to 'Show', setlist %></td>
+    <td><%= link_to 'Edit', edit_setlist_path(setlist) %></td>
+    <td><%= link_to 'Destroy', setlist, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Setlist', new_setlist_path %>

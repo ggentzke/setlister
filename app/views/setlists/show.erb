@@ -1,0 +1,13 @@
+<h1><%= @setlist.name %></h1>
+
+<% if @setlist.songs.present? %>
+	<ul>
+		<% @setlist.songs.each do |song| %>
+			<li><%= song.title %> (<%= song.duration %>)</li>
+		<% end %>
+	</ul>
+<% else %>
+	<p>This setlist has no songs.</p>
+<% end %>
+
+<%= link_to 'Back to all setlists', setlists_path %>
