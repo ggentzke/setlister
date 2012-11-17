@@ -1,11 +1,25 @@
 <p>
-  <b>Duration:</b>
-  <%= @song.duration %>
+  <b>Title:</b>
+  <%= @song.title %>
 </p>
 
 <p>
-  <b>Title:</b>
-  <%= @song.title %>
+  <b>Duration:</b>
+  <%= music_duration @song.duration %>
+</p>
+
+<p>
+  <b>Setlists Containing This Song:</b>
+  <br />
+<% if @song.setlists.present? %>
+  <ul>
+  <% @song.setlists.each do |setlist| %>
+    <li><%= setlist.name %> (<%= music_duration setlist.duration %>)</li>
+  <% end %>
+  </ul>
+<% else %>
+  <i>This song is not in any setlists.</i>
+<% end %>
 </p>
 
 

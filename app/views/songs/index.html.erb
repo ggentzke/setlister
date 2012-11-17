@@ -1,9 +1,9 @@
-<h1>Listing songs</h1>
+<h1>All Songs</h1>
 
 <table>
   <tr>
-    <th>Duration</th>
     <th>Title</th>
+    <th>Duration</th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,15 +11,16 @@
 
 <% @songs.each do |song| %>
   <tr>
-    <td><%= song.duration %></td>
     <td><%= song.title %></td>
+    <td><%= music_duration song.duration %></td>
     <td><%= link_to 'Show', song %></td>
     <td><%= link_to 'Edit', edit_song_path(song) %></td>
-    <td><%= link_to 'Destroy', song, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Delete', song, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
+
 </table>
 
 <br />
 
-<%= link_to 'New Song', new_song_path %>
+<%= link_to 'Add a Song', new_song_path %>
