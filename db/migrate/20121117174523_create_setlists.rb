@@ -8,8 +8,8 @@ class CreateSetlists < ActiveRecord::Migration
     end
 
     create_table :setlists_songs, id: false do |t|
-    	t.references :songs
-    	t.references :setlists
+    	t.references :song
+    	t.references :setlist
     end
 
     add_index :setlists_songs, [:setlist_id, :song_id]

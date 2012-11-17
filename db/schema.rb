@@ -11,7 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121117162555) do
+ActiveRecord::Schema.define(:version => 20121117174523) do
+
+  create_table "setlists", :force => true do |t|
+    t.string   "name"
+    t.integer  "duration"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "setlists_songs", :id => false, :force => true do |t|
+    t.integer "song_id"
+    t.integer "setlist_id"
+  end
+
+  add_index "setlists_songs", ["setlist_id", "song_id"], :name => "index_setlists_songs_on_setlist_id_and_song_id"
+  add_index "setlists_songs", ["song_id", "setlist_id"], :name => "index_setlists_songs_on_song_id_and_setlist_id"
 
   create_table "songs", :force => true do |t|
     t.integer  "duration"
