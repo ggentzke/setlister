@@ -10,6 +10,19 @@
   <%= @song.title %>
 </p>
 
+<p>
+  <b>Setlists Containing This Song:</b>
+<% if @song.setlists.present? %>
+  <ul>
+  <% @song.setlists.each do |setlist| %>
+    <li><%= setlist.name %> (<%= setlist.duration %>)</li>
+  <% end %>
+  </ul>
+<% else %>
+  <i>This song is not in any setlists.</i>
+<% end %>
+</p>
+
 
 <%= link_to 'Edit', edit_song_path(@song) %> |
 <%= link_to 'Back', songs_path %>
