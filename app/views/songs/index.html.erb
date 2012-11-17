@@ -11,8 +11,8 @@
 
 <% @songs.each do |song| %>
   <tr>
-    <td><%= song.duration %></td>
     <td><%= song.title %></td>
+    <td><%= music_duration song.duration %></td>
     <td><%= link_to 'Show', song %></td>
     <td><%= link_to 'Edit', edit_song_path(song) %></td>
     <td><%= link_to 'Delete', song, confirm: 'Are you sure?', method: :delete %></td>

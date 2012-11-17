@@ -15,7 +15,7 @@
 <% if @song.setlists.present? %>
   <ul>
   <% @song.setlists.each do |setlist| %>
-    <li><%= setlist.name %> (<%= setlist.duration %>)</li>
+    <li><%= setlist.name %> (<%= music_duration setlist.duration %>)</li>
   <% end %>
   </ul>
 <% else %>
