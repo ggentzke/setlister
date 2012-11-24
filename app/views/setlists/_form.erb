@@ -17,7 +17,7 @@
         <legend>Add a Setlist</legend>
         <div class="field">
           <%= f.label :duration %><br />
-          <%= f.number_field :duration %>
+          <%= f.number_field :duration, value: 0, min: 0 %>
         </div>
         <div class="field">
           <%= f.label :name %><br />

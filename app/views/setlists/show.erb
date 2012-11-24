@@ -1,11 +1,11 @@
 <h1><%= @setlist.name %></h1>
 
 <% if @setlist.songs.present? %>
-	<ul>
+	<ol>
 		<% @setlist.songs.each do |song| %>
 			<li><%= song.title %> (<%= music_duration song.duration %>)</li>
 		<% end %>
-	</ul>
+	</ol>
 <% else %>
 	<p>This setlist has no songs.</p>
 <% end %>
