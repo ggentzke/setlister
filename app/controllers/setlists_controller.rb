@@ -33,6 +33,15 @@ class SetlistsController < ApplicationController
       @setlist.songs.push Song.find(params[:add_song])
       @setlist.save
       redirect_to setlist_path, notice: 'Setlist updated'
+
+    elsif params[:remove_song].present?
+     	@setlist.songs.delete(Song.find(params[:remove_song]))
+     	if @setlist.save
+     		redirect_to setlist_path, notice: 'Song removed, setlist updated.'
+     	else
+     		render :show, error: 'Unable to remove song'
+     	end
+     	
     else
 		  if @setlist.update_attributes(params[:setlist])
   			redirect_to setlist_path, notice: 'Setlist updated'
