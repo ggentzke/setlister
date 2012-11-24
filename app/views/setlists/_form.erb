@@ -1,25 +1,33 @@
-<%= form_for(@setlist) do |f| %>
-  <% if @setlist.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@setlist.errors.count, "error") %> prohibited this song from being saved:</h2>
+ <div class="row-fluid">
+  <div class="span4">
+    <%= form_for @setlist, html: { class: "form-horizontal" } do |f| %>
+      <% if @setlist.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@setlist.errors.count, "error") %> prohibited this song from being saved:</h2>
 
-      <ul>
-      <% @setlist.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+          <ul>
+          <% @setlist.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :duration %><br />
-    <%= f.number_field :duration %>
+      <fieldset>
+        <legend>Add a Setlist</legend>
+        <div class="field">
+          <%= f.label :duration %><br />
+          <%= f.number_field :duration %>
+        </div>
+        <div class="field">
+          <%= f.label :name %><br />
+          <%= f.text_field :name %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.submit class: 'btn btn-primary' %>
+        </div>
+      </fieldset>
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
