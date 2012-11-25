@@ -9,7 +9,7 @@ class Song < ActiveRecord::Base
   private
   
     def set_default_values
-      self.duration = 0
+      self.duration ||= 0
     end
   
 end
