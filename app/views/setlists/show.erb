@@ -6,7 +6,7 @@
     <tr>
 			<td><%= song.title %></td>
       <td><%= music_duration song.duration %></td>
-      <td><%= button_to "Remove Song", { action: 'update', remove_song: song.id }, method: 'put', type: 'submit', class: 'btn btn-danger btn-small'%></td>
+      <td><%= button_to "Remove Song", { action: 'update', remove_song: song.id }, method: 'put', class: 'btn btn-danger btn-small'%></td>
 		</tr>
     <% end %>
 	</table>
