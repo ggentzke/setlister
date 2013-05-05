@@ -1,7 +1,8 @@
 class SetlistsController < ApplicationController
 
 	def index
-		@setlists = Setlist.all
+		@setlists = params[:band_id].present? ? Setlist.where(band_id: params[:band_id]) : Setlist.all
+    @setlists.sort_by!{ |s| s.band.name }
 	end
 
 	def new
@@ -12,8 +13,9 @@ class SetlistsController < ApplicationController
 		@setlist = Setlist.find(params[:id])
 	end
 
+  # Note: by nature of the 'new' page we only make Custom setlists
 	def create
-		@setlist = Setlist.new(params[:setlist])
+		@setlist = Setlist.new(params[:setlist].merge(setlist_type: :CUSTOM))
 	
 		if @setlist.save
 			redirect_to @setlist, notice: 'Setlist successfully saved.'
@@ -28,6 +30,7 @@ class SetlistsController < ApplicationController
 
 	def update
 		@setlist = Setlist.find(params[:id])
+		@setlist.mark_type(:MODIFIED) if @setlist.generated?
     
     if params[:add_song].present?
       @setlist.songs.push Song.find(params[:add_song])

@@ -11,31 +11,53 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121204040354) do
+ActiveRecord::Schema.define(:version => 20130504200000) do
 
-  create_table "setlists", :force => true do |t|
+  create_table "bands", :force => true do |t|
     t.string   "name"
-    t.integer  "duration"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  create_table "setlists_songs", :id => false, :force => true do |t|
+  create_table "setlist_items", :force => true do |t|
     t.integer "song_id"
     t.integer "setlist_id"
+    t.integer "order"
   end
 
-  add_index "setlists_songs", ["setlist_id", "song_id"], :name => "index_setlists_songs_on_setlist_id_and_song_id"
-  add_index "setlists_songs", ["song_id", "setlist_id"], :name => "index_setlists_songs_on_song_id_and_setlist_id"
+  add_index "setlist_items", ["setlist_id", "song_id"], :name => "index_setlist_items_on_setlist_id_and_song_id"
+  add_index "setlist_items", ["song_id", "setlist_id"], :name => "index_setlist_items_on_song_id_and_setlist_id"
+
+  create_table "setlist_types", :force => true do |t|
+    t.string "name"
+  end
+
+  create_table "setlists", :force => true do |t|
+    t.string   "title"
+    t.integer  "duration"
+    t.integer  "play_count"
+    t.integer  "setlist_type_id"
+    t.string   "type"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "band_id"
+  end
+
+  add_index "setlists", ["band_id"], :name => "index_setlists_on_band_id"
 
   create_table "songs", :force => true do |t|
     t.integer  "duration"
     t.string   "title"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
     t.string   "tuning"
     t.string   "key"
     t.integer  "bpm"
+    t.integer  "play_count", :default => 0
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.integer  "band_id"
   end
+
+  add_index "songs", ["band_id"], :name => "index_songs_on_band_id"
+  add_index "songs", ["tuning"], :name => "index_songs_on_tuning"
 
 end

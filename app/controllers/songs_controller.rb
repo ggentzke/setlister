@@ -2,7 +2,8 @@ class SongsController < ApplicationController
   # GET /songs
   # GET /songs.json
   def index
-    @songs = Song.all
+    @songs = params[:band_id].present? ? Song.where(band_id: params[:band_id]) : Song.all
+    @songs.sort_by!{ |s| s.band.name }
 
     respond_to do |format|
       format.html # index.html.erb

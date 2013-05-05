@@ -1,0 +1,23 @@
+<h1>Listing bands</h1>
+
+<table class='table table-condensed'>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @bands.each do |band| %>
+  <tr>
+    <td><%= band.name %></td>
+    <td><%= link_to 'Show', band %></td>
+    <td><%= link_to 'Edit', edit_band_path(band) %></td>
+    <td><%= link_to 'Destroy', band, confirm: 'This is wipe out all songs and setlists owned by this band. Are you sure you want to do this?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Band', new_band_path %>

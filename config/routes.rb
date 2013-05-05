@@ -1,4 +1,5 @@
 Setlister::Application.routes.draw do
+  resources :bands
   resources :songs
   resources :setlists
 

@@ -3,6 +3,7 @@
 <table class='table table-condensed'>
   <tr>
     <th>Title</th>
+    <th>Band</th>
     <th>Duration</th>
     <th></th>
     <th></th>
@@ -12,6 +13,7 @@
 <% @songs.each do |song| %>
   <tr>
     <td><%= song.title %></td>
+    <td><%= song.band.name %></td>
     <td><%= music_duration song.duration %></td>
     <td><%= link_to 'Show', song %></td>
     <td><%= link_to 'Edit', edit_song_path(song) %></td>

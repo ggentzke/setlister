@@ -1,0 +1,10 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+pfisters:
+  string: 'Pfisters'
+
+inrod:
+  string: 'In Rod'
+
+rdk:
+  string: 'Robot Death Kites'

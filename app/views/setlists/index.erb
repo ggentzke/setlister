@@ -2,8 +2,9 @@
 
 <table class='table table-condensed'>
   <tr>
+    <th>Title</th>
+    <th>Band</th>
     <th>Duration</th>
-    <th>Name</th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,8 +12,9 @@
 
 <% @setlists.each do |setlist| %>
   <tr>
+    <td><%= setlist.title %></td>
+    <td><%= setlist.band.name %></td>
     <td><%= setlist.duration %></td>
-    <td><%= setlist.name %></td>
     <td><%= link_to 'Show', setlist %></td>
     <td><%= link_to 'Edit', edit_setlist_path(setlist) %></td>
     <td><%= link_to 'Destroy', setlist, confirm: 'Are you sure?', method: :delete %></td>

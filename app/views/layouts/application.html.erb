@@ -21,6 +21,7 @@
             <li><%= link_to 'Home', root_path %></li>
             <li><%= link_to 'Setlists', setlists_path %></li>
             <li><%= link_to 'Songs', songs_path %></li>
+            <li><%= link_to 'Bands', bands_path %></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -35,6 +36,11 @@
 		<%= yield %>
 
 	</div>
+	
+	<footer>
+	  <hr />
+    <p class='copy'>this is a <a href='http://pixelkeg.com' target='_blank'>pixelkeg</a> project</p>
+  </footer>
 
 </body>
 </html>
