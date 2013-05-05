@@ -5,6 +5,10 @@ Setlister::Application.routes.draw do
 
   root :to => 'home#index'
 
+  # Error Handling
+  match '/404', :to => 'errors#not_found'
+  match '/500', :to => 'errors#error'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
