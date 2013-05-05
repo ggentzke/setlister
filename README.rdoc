@@ -1,5 +1,0 @@
-== Welcome to Setlister, bro
-
-Project Goals:
-# Create songs
-# Create lists of songs - "setlists"
