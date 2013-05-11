@@ -5,7 +5,7 @@ class Song < ActiveRecord::Base
   attr_accessible :id, :duration, :title, :key, :tuning, :bpm
   
   # Songs should be ordered by band until we have true band/user login scoping
-  default_scope order('title ASC')
+  default_scope { order('title ASC') }
 
   validates_presence_of :title
   validates :duration, numericality: { greater_than_or_equal_to: 0 }
